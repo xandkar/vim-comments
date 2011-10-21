@@ -152,6 +152,9 @@ function! CommentLine()
   " for .tex files use %
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
     execute ":silent! normal ^i%\<ESC>\<down>^"
+  " for .erl files use %
+  elseif file_name =~ '\.erl$' || file_name =~ '\.esc$'
+    execute ":silent! normal ^i%\<ESC>\<down>^"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^gIC\<ESC>\<down>^"
@@ -196,6 +199,9 @@ function! UnCommentLine()
     execute ":silent! normal :nohlsearch\<CR>:s/-->//\<CR>=="
   " for .tex use %
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
+    execute ":silent! normal :nohlsearch\<CR>:s/%/\<CR>:nohlsearch\<CR>"
+  " for .erl use %
+  elseif file_name =~ '\.erl$' || file_name =~ '\.esc$'
     execute ":silent! normal :nohlsearch\<CR>:s/%/\<CR>:nohlsearch\<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
@@ -262,6 +268,9 @@ function! RangeCommentLine()
   " for .tex use %
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
     execute ":silent! normal :s/\\S/\\%\\0/\<CR>:nohlsearch<CR>"
+  " for .erl use %
+  elseif file_name =~ '\.erl$' || file_name =~ '\.esc$'
+    execute ":silent! normal :s/\\S/\\%\\0/\<CR>:nohlsearch<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
     execute ":silent! normal ^gIC\<ESC>\<down>^"
@@ -305,6 +314,9 @@ function! RangeUnCommentLine()
     execute ":silent! normal :s/\\#//\<CR>:nohlsearch\<CR>"
   " for .tex use %
   elseif file_name =~ '\.tex$' || file_name =~ '\.nw$'
+    execute ":silent! normal :s/%/\<CR>:nohlsearch\<CR>"
+  " for .erl and .esc use %
+  elseif file_name =~ '\.erl$' || file_name =~ '\.esc$'
     execute ":silent! normal :s/%/\<CR>:nohlsearch\<CR>"
   " for fortran 77 files use C on first column 
   elseif file_name =~ '\.f$' || file_name =~ '\.F$'
