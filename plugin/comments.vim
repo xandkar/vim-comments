@@ -125,7 +125,7 @@ function! CommentLine()
       execute ":silent! normal ^i/*\<ESC>$a*/\<ESC>==\<down>^"
     endif
   "for .ml or .mli files use (* *)
-  elseif file_name =~ '\.ml$' || file_name =~ '\.mli$'
+  elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)") == -1
       execute ":silent! normal ^i(*\<ESC>$a*)\<ESC>==\<down>^"
     endif
@@ -178,7 +178,7 @@ function! UnCommentLine()
   if file_name =~ '\.cpp$' || file_name =~ '\.hpp$' || file_name =~ '\.java$' || file_name =~ '\.php[2345]\?$' || file_name =~ '\.C$'
     execute ":silent! normal :nohlsearch\<CR>:s/\\/\\///\<CR>:nohlsearch\<CR>=="
   " for .ml or .mli
-  elseif file_name =~ '\.ml$' || file_name =~ '\.mli$'
+  elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>:nohlsearch\<CR>"
 	execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>:nohlsearch\<CR>=="
   " for .c or .h or .pc or .css files use /* */
@@ -252,7 +252,7 @@ function! RangeCommentLine()
        execute ":silent! normal ^i\<\!--\<ESC>$a--\>\<ESC>==\<down>^"
     endif
    " for .ml, .mli files use (* *)
-  elseif file_name =~ '\.ml$' || file_name =~ '\.mli'
+  elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     if stridx(getline("."), "\(\*") == -1 && stridx(getline("."), "\*)/") == -1
       execute ":silent! normal ^i\(*\<ESC>$a*)\<ESC>==\<down>^"
 	endif
@@ -303,7 +303,7 @@ function! RangeUnCommentLine()
   elseif file_name =~ '\.sql$'
     execute ":silent! normal :s/\\-\\-//\<CR>:nohlsearch\<CR>"
   " for .ml .mli
-  elseif file_name =~ '\.ml$' || file_name =~ '\.mli$'
+  elseif file_name =~ '\.ml$' || file_name =~ '\.mli$' || file_name =~ '\.mll$' || file_name =~ '\.mly$'
     execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>=="
     execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>=="
   " for .xml .html .xhtml .htm use <!-- -->
